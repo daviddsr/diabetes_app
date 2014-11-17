@@ -1,0 +1,10 @@
+<h1>Página de inicio</h1>
+
+<% if user_signed_in? %>
+	<h1><%= current_user.name %> is logued in</h1>
+	<%= link_to 'Log out', destroy_user_session_path, method: 'DELETE' %>
+<% else %>
+	<%= link_to 'Log in', new_user_session_path %>
+	<%= link_to 'Sign up', new_user_registration_path %>
+
+<% end %>

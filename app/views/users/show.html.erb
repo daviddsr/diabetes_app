@@ -1,0 +1,14 @@
+<% if user_signed_in? %>
+	<h1><%= current_user.name %> is logued in</h1>
+	<%= link_to 'Log out', destroy_user_session_path, method: 'DELETE' %>
+<% else %>
+	<h1>Not logued</h1>
+<% end %>
+
+
+<h1><%= @user.name %> Site's</h1>
+
+<%= link_to 'Controls', (months_path) %>
+
+
+
