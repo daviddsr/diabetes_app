@@ -6,12 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Month.create name: 'November'
 
-Month.create name: 'December'
+Control.create level: 110, period: 'pre-breakfast'
 
-Month.create name: 'January'
-
-Control.create level: 110, period: 'pre-breakfast', month_id: 1
-
-Control.create level: 112, period: 'post-breakfast', month_id: 1
+Control.create level: 112, period: 'post-breakfast'

@@ -1,7 +1,0 @@
-<h1>My Controls</h1>
-
-<ul>
-	<% for month in @months %>
-			<li><%= link_to month.name, month_controls_path(month.id) %></li>
-		<% end %>
-</ul>

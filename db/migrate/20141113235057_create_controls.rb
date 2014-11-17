@@ -3,9 +3,8 @@ class CreateControls < ActiveRecord::Migration
     create_table :controls do |t|
       t.integer :level
       t.string :period
-      t.integer :user_id
-      t.integer :month_id
-
+      t.date :day
+      
       t.timestamps
     end
   end

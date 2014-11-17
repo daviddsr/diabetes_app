@@ -7,5 +7,7 @@ class ControlsController < ApplicationController
 	end
 
 	def new
+
+		@control= Control.new
 	end
 end

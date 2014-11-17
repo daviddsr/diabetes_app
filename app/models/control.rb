@@ -1,4 +1,14 @@
 class Control < ActiveRecord::Base
-	belongs_to :user
-	belongs_to :month
+	
+	validates :level, presence: true 
+	validates :period, presence: true
+	validates :day, presence: true
+
+	@@periods= ['pre-breakfast', 'post-breakfast', 'pre-lunch', 'post-lunch', 'afternoon', 'pre-dinner', 'post-dinner']
+
+	def self.periods
+		@@periods
+	end
+
+
 end
