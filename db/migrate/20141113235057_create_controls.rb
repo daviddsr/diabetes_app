@@ -3,7 +3,7 @@ class CreateControls < ActiveRecord::Migration
     create_table :controls do |t|
       t.integer :level
       t.string :period
-      t.date :day
+      t.datetime :day
       
       t.timestamps
     end

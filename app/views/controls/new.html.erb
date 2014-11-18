@@ -1,22 +1,4 @@
 
 
-<% if @control.errors.any? %>
-<ul>
-<% @control.errors.full_messages.each do |error_message| %>
-   <li><p><%= error_message %></p> </li>
-<% end %>
-</ul>
-<% end %>
-
-
-<%= form_for @control do |f| %>
-	<%= f.label :level %>
-	<%= f.number_field :level %>
-
-	<%= f.datetime_select(:day, default: Time.now + 1.days) %>
-	<%= f.select(:period, Control.periods) %>
-
-	<%= f.submit "Save" %>
-
-	<% end %>
+<%= render 'form' %>
 

@@ -12,8 +12,14 @@ class Control < ActiveRecord::Base
 	end
 
 	def self.order_by_date
-		@controls= Control.all.sort_by { |control| [control.day, control.period]}
+
+
+		@controls= Control.all.sort_by { |control| [control.get_day, control.period]}
 	end
 
-
+	
+	def get_day
+		daycalendar= DateTime.new(day.year, day.month, day.day)
+		daycalendar
+	end
 end

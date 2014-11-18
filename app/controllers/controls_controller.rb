@@ -2,7 +2,7 @@ class ControlsController < ApplicationController
 
 	def index
 
-		@controls= Control.order_by_date
+		@controls= Control.order_by_date 
 
 
 	end
@@ -28,14 +28,39 @@ class ControlsController < ApplicationController
 		end
 	end
 
+
+	def edit
+		@control= Control.find(params[:id])
+	end
+
+
+	def update
+
+		@control= Control.find(params[:id])
+
+		if @control.update_attributes(control_params)
+
+			flash[:notice] = "Congratulation, your control has been updated"
+
+			redirect_to controls_path
+		else
+			@errors= @control.errors.full_messages
+			render 'edit'
+		end
+	end
+
+
 	def destroy
 		@control= Control.find(params[:id])
 
 		if @control.delete
 
+			flash[:notice] = "Congratulation, your control has been removed"
+
 			redirect_to controls_path 
 		end
 	end
+
 
 
 	private

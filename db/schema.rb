@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20141114141140) do
   create_table "controls", force: true do |t|
     t.integer  "level"
     t.string   "period"
-    t.date     "day"
+    t.datetime "day"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

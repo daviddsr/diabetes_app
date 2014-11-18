@@ -6,7 +6,13 @@
 <% @controls.each do |control| %>
 	<li><%= "Blood Sugar Control:" + control.level.to_s + " - " + control.period + " - " + control.day.to_s %></li>
 	<%= link_to "Delete", control_path(control.id), method:'delete', data: {confirm: "Are you sure?"} %>
+	<%= link_to "edit", edit_control_path(control.id)%>
 </ul>
 <% end %>
 
+
+<ul>
 <%= link_to 'New Control', new_control_path %>
+</ul>
+
+<div id='calendar'></div>
