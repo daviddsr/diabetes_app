@@ -15,5 +15,7 @@
 //= require bootstrap.min
 //= require moment
 //= require fullcalendar
+//= require highcharts
+//= require exporting
 
   

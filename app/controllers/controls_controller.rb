@@ -7,6 +7,25 @@ class ControlsController < ApplicationController
 
 	end
 
+	def event
+
+		if request.xhr?
+			@controls=Control.all 
+			render json: @controls
+
+		end
+
+		# @controls= Control.all
+		# @controls.to_json
+		# render json: @controls
+
+		
+	end
+
+	def evolution_control
+		
+	end
+
 	def show
 	end
 

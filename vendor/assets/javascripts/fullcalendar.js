@@ -19,7 +19,7 @@ var defaults = {
 
 	lang: 'en',
 
-	defaultTimedEventDuration: '02:00:00',
+	defaultTimedEventDuration: '00:20:00',
 	defaultAllDayEventDuration: { days: 1 },
 	forceEventDuration: false,
 	nextDayThreshold: '09:00:00', // 9am
