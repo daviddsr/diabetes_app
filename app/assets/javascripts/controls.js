@@ -1,34 +1,13 @@
-
-
-
-
-
-
-
-
-
-
 $(document).ready(function() {
-    console.log("hola")
-    // function get_control(data) {
-    //     console.log(data)
-    // }
-    // function getdata(){
-    //     $.getJSON("event",function(data){
-    //         get_control(data);
-    //     });
-    // }
-    // getdata();
-
-    $.get('/peticionajax', function (data) {
+    $.get('/controls/calendar', function (data) {
             drawControl(data);
-        })
-    
+        });
+
 
     // page is now ready, initialize the calendar...
-    
+
     function allControls(controls) {
-        var arrayControls=[]
+        var arrayControls=[];
         for (i in controls) {
             var level= controls[i].level
             var day= controls[i].day
@@ -36,17 +15,14 @@ $(document).ready(function() {
             console.log(controls[i].period)
             arrayControls.push({title:level, start:day, description:"period", textColor: 'black'})
         }
-            return arrayControls
-
-
+            return arrayControls;
     }
 
-    
+
 
     function drawControl(controls) {
-            
             console.log(controls[0])
-            
+
             $('#calendar').fullCalendar({
                 scrollTime: '24:00:00',
                 minTime: '07:00:00',
@@ -71,7 +47,7 @@ $(document).ready(function() {
                         element.css('background-color', 'yellow');
                     }
                 },
-                // 
+                //
         // put your options and callbacks here
     })
 
