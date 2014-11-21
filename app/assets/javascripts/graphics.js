@@ -1,124 +1,74 @@
 
-    // $(document).ready(function() {
-    // console.log("hola")
-
-    // $.getJSON('graphicscontrols', function (controls) {
-    //             function printControls(controls)
-            
 
 
-    // function arraySeries(controls) {
-    //     var series=[];
-    //     for (i in controls) {
+$(document).ready(function() {
 
-    //     }
-    // }
+    var options = {
+
+        ///Boolean - Whether grid lines are shown across the chart
+        scaleShowGridLines : true,
+
+        //String - Colour of the grid lines
+        scaleGridLineColor : "rgba(0,0,0,.05)",
+
+        //Number - Width of the grid lines
+        scaleGridLineWidth : 1,
+
+        //Boolean - Whether the line is curved between points
+        bezierCurve : true,
+
+        //Number - Tension of the bezier curve between points
+        bezierCurveTension : 0.4,
+
+        //Boolean - Whether to show a dot for each point
+        pointDot : true,
+
+        //Number - Radius of each point dot in pixels
+        pointDotRadius : 4,
+
+        //Number - Pixel width of point dot stroke
+        pointDotStrokeWidth : 1,
+
+        //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+        pointHitDetectionRadius : 20,
+
+        //Boolean - Whether to show a stroke for datasets
+        datasetStroke : true,
+
+        //Number - Pixel width of dataset stroke
+        datasetStrokeWidth : 4,
+
+        //Boolean - Whether to fill the dataset with a colour
+        datasetFill : true,
+
+        //String - A legend template
+        legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+
+    };
 
 
-
-    // function printcontrols(controls) {
-
-    function printControls (data) {
-    // $(function () {
-        $('#container').highcharts({
-            chart: {
-
-                width: 1330,
-                height: 600
-            },
-            title: {
-                text: 'My diabethes evolution'
-            },
-            subtitle: {
-                text: 'Source: WorldClimate.com'
-            },
-            xAxis: {
-                type: 'datetime',
-                dateTimeLabelFormats: {
-                    hour: '%H:%M'
-                }
-            },
-            yAxis: {
-                min: 0,
-                max: 250,
-                tickInterval: 50,
-                title: {
-                    text: 'Blood Sugar Level (d/g)'
-                }
-            },
-            plotOptions:{
-            series:{
-                pointStart:Date.UTC(2014,11,31,6,0,0,0),
-                pointInterval: 3600 * 2000
-            }
-        },
-            series: // data
-
-             [{
-                 name: 'Tokyo',
-                data: [data[1].level, data[2].level, data[3].level]
-            }, 
+    $.get('/graphicscontrols', function(data) {
+        var graphicData = {
+        labels: [],
+        datasets: [
             {
-                 name: 'London',
-                 data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-             }]
-        });
-    }
+                label: "Controls",
+                fillColor: "rgba(220,220,220,0.2)",
+                strokeColor: "rgba(220,220,220,1)",
+                pointColor: "rgba(220,220,220,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: []
+                }
+            ]
+        };
+        graphicData.labels = data.labels;
+        graphicData.datasets.data = data.data;
+        console.log(graphicData);
+        var context = document.getElementById("evolution-chart").getContext("2d");
+        var evolutionChart = new Chart(context).Line(graphicData, options);
+    });
 
 
-    $(document).ready(function() {
- $.ajax({
-    url: '/graphicscontrols',
-    type: 'GET',
-    async: true,
-    dataType: "json",
-    success: function (data) {
-        printControls(data);
-        console.log(data)
-    }
-  });
- });  
-
-
-//       $(document).ready(function() {
-
-//     var options = {
-//         chart: {
-//             renderTo: 'container',
-//             type: 'spline'
-//         },
-//         title: {
-//                 text: 'My diabethes evolution'
-//             },
-//             subtitle: {
-//                 text: 'Source: WorldClimate.com'
-//             },
-//             xAxis: {
-//                 type: 'datetime',
-//                 dateTimeLabelFormats: {
-//                     hour: '%H:%M'
-//                 }
-//             },
-//             yAxis: {
-//                 min: 0,
-//                 max: 250,
-//                 tickInterval: 50,
-//                 title: {
-//                     text: 'Blood Sugar Level (d/g)'
-//                 }
-//             },
-//             plotOptions:{
-//             series:{
-//                 pointStart:Date.UTC(2014,11,31,6,0,0,0),
-//                 pointInterval: 3600 * 2000
-//                 }
-//             },
-//             series: [{}]
-//     };
-
-//     $.getJSON('graphicscontrols', function(data) {
-//         options.series.data = data;
-//         var chart = new Highcharts.Chart(options);
-//     });
-
-// });
+});

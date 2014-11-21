@@ -4,7 +4,7 @@ class GraphicsController < ApplicationController
 	end
 
 	def graphics_evolution
-		@controls = Control.all
-		render json: @controls.to_json
+    graphic_data = Control.graphic_data_for_a_day "2014-11-21"
+		render json: graphic_data.to_json
 	end
 end
