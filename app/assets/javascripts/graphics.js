@@ -1,3 +1,33 @@
+var drawCanvasForChart = function(graphicData, options) {
+    var context = document.getElementById("evolution-chart").getContext("2d");
+    var evolutionChart = new Chart(context).Line(graphicData, options);
+};
+
+var initChart = function(data, options) {
+    var graphicData = {
+        labels: [],
+        datasets: [
+            {
+                label: "Controls",
+                fillColor: "rgba(220,220,220,0.2)",
+                strokeColor: "rgba(220,220,220,1)",
+                pointColor: "rgba(220,220,220,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: []
+            }
+        ]
+    };
+    graphicData.labels = data.labels;
+    graphicData.datasets[0].data = data.data;
+    drawCanvasForChart(graphicData, options);
+};
+
+var drawChart = function() {
+    $.get('/graphicscontrols', initChart);
+};
+
 $(document).ready(function() {
 
     var options = {
@@ -42,30 +72,6 @@ $(document).ready(function() {
         legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
 
     };
-
-
-    $.get('/graphicscontrols', function(data) {
-        var graphicData = {
-        labels: [],
-        datasets: [
-            {
-                label: "Controls",
-                fillColor: "rgba(220,220,220,0.2)",
-                strokeColor: "rgba(220,220,220,1)",
-                pointColor: "rgba(220,220,220,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                data: []
-                }
-            ]
-        };
-        graphicData.labels = data.labels;
-        graphicData.datasets.data = data.data;
-        console.log(graphicData);
-        var context = document.getElementById("evolution-chart").getContext("2d");
-        var evolutionChart = new Chart(context).Line(graphicData, options);
-    });
-
+    drawChart();
 
 });
