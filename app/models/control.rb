@@ -41,7 +41,12 @@ class Control < ActiveRecord::Base
 
 	def self.graphic_data_for_a_day(day)
 	#	controls = by_day day
-		controls = compareDay(day)
+		controls = Control.compareDay(day)
+		controls_array=[]
+	controls_array=	controls.map do |control|
+				[control.day.strftime("%I:%M%p").to_time.utc.to_i * 1000, control.level]
+			end
+
     dates = dates_in_controls controls
     hours = hours_from_dates dates
     levels = levels_from_controls controls
@@ -49,11 +54,11 @@ class Control < ActiveRecord::Base
 		
 
 		graphic_data = {  name: "day",
-											data: [hours.to_s.to_time.utc.to_i * 1000, levels]
+											data: controls_array
 
 											
 									   }
-	  puts graphic_data.to_s
+	  puts graphic_data
     graphic_data
 	end
 

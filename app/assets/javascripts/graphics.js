@@ -161,6 +161,7 @@
 
 $(function () {
     $.get('/graphicscontrols', function(data) {
+        console.log(data)
     $('#container').highcharts({
         chart: {
             type: 'spline'
@@ -192,7 +193,7 @@ $(function () {
             pointFormat: '{point.x:%e. %b}: {point.y:.2f} m'
         },
 
-        series: data
+        series: [data]
     });
 });
 
