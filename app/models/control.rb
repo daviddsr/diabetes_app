@@ -58,7 +58,6 @@ class Control < ActiveRecord::Base
 
 											
 									   }
-	  puts graphic_data
     graphic_data
 	end
 

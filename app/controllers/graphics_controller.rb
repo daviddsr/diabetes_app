@@ -5,8 +5,9 @@ class GraphicsController < ApplicationController
 
 	def graphics_evolution
 		
-    # graphic_data = Control.graphic_data_for_a_day "2014-11-21"
+     # graphic_data = Control.graphic_data_for_a_day "2014-11-21"
     
+    	# puts graphic_data
     dates= Control.all.map { |control| control.day.strftime("%d-%m-%Y") }
 		
 		
