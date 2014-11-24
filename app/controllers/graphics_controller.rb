@@ -5,29 +5,30 @@ class GraphicsController < ApplicationController
 
 	def graphics_evolution
 		
-    graphic_data = Control.graphic_data_for_a_day "2014-11-21"
+    # graphic_data = Control.graphic_data_for_a_day "2014-11-21"
     
-  #   dates=[]
-
-  #   Control.all.each { |control| dates << control.day.strftime("%d-%m-%Y") }
+    dates= Control.all.map { |control| control.day.strftime("%d-%m-%Y") }
 		
 		
 
-  #   days = []
+    days = []
 
-  #   dates.each do |date|
-  #   	unless days.include?(date)
-  #   		days.push(date)
-  #   	end
-  #   end
+    dates.each do |date|
+    	unless days.include?(date)
+    		days.push(date)
+    	end
 
-  #   graphic_data=[]
+    end
 
-  #   days.each do |day|
-  #   	puts day
-		# 	graphic_data.push(Control.graphic_data_for_a_day day.to_s)
 
-		# end
+    graphic_data=[]
+
+    days.each do |day|
+    	puts days
+			graphic_data.push(Control.graphic_data_for_a_day day.to_s)
+			puts graphic_data
+
+		end
     	
 		
 		
