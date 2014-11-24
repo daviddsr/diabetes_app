@@ -15,5 +15,11 @@ Control.create(level: 122, period: Control.periods[2], day: 2.days.ago)
 
 Control.create(level: 133, period: Control.periods[1], day: 3.days.ago)
 
+Ingredient.create(name: 'Potatoes', ratio: 50)
+
+Ingredient.create(name: 'Rice', ratio: 15)
+
+Ingredient.create(name: 'Banana', ratio: 50)
+
 
 
