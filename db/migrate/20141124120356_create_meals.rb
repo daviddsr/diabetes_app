@@ -4,6 +4,7 @@ class CreateMeals < ActiveRecord::Migration
       t.string :grams
       t.string :user_id
       t.string :ingredient_id
+      t.datetime :day
 
       t.timestamps
     end

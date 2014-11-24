@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
 	has_many :months
 
 	has_many :meals
-	has_many :ingredients, through: :meals
 
 	validates :name, presence: true
 end

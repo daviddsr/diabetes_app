@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :controls
   resources :graphics, only: [:index]
+  resources :meals, only: [:index, :new, :create]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20141124120356) do
   create_table "ingredients", force: true do |t|
     t.string   "name"
     t.string   "ratio"
+    t.integer  "meal_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -32,6 +33,7 @@ ActiveRecord::Schema.define(version: 20141124120356) do
     t.string   "grams"
     t.string   "user_id"
     t.string   "ingredient_id"
+    t.datetime "day"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,5 +1,16 @@
 class Ingredient < ActiveRecord::Base
 
-	has_many :meals
-	has_many :users, through: :meals
+	belongs_to :meal
+	
+
+
+def self.showAll
+ingredientsArray = []
+		Ingredient.all.each do |ingredient|
+			ingredientsArray.push(ingredient.name)
+
+end
+return ingredientsArray
+end
+
 end

@@ -1,0 +1,22 @@
+<h1>Create a new Meal </h1>
+
+
+<%= form_for @meal do |f| %>
+	<%= f.label :ingredient_id %>
+	<%= f.select(:ingredient_id, @ingredients.showAll) %>
+
+	<%= f.label :grams %>
+	<%= f.number_field :grams %>
+
+	<%= f.label :ingredient_id %>
+	<%= f.select(:ingredient_id, @ingredients.showAll) %>
+
+	<%= f.label :grams %>
+	<%= f.number_field :grams %>
+
+	<%= f.label :to_date %>
+	<%= f.datetime_select(:day, default: DateTime.current) %>
+
+	<%= f.submit "Save" %>
+
+	<% end %>

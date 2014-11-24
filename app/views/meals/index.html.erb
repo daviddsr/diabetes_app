@@ -1,0 +1,19 @@
+<h1>My Meals</h1>
+<p><%= notice %></p>
+
+
+<% @meals.each do |meal| %>
+<ul>
+	<% meal.ingredients.each do |ingredient| %>
+	<li><%= "Meal:" + meal.ingredient.name + " - " + meal.ingredient.grams %></li>
+	<%= link_to "Delete", control_path(control.id), method:'delete', data: {confirm: "Are you sure?"} %>
+	<%= link_to "edit", edit_control_path(control.id)%>
+	<% end %>
+</ul>
+
+<% end %>
+
+<ul>
+<%= link_to 'New Control', new_control_path %>
+</ul>
+
