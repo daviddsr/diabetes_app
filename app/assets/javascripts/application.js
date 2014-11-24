@@ -16,3 +16,4 @@
 //= require moment
 //= require fullcalendar
 //= require Chart
+//= require highcharts

@@ -29,24 +29,46 @@ class Control < ActiveRecord::Base
 		@controls = Control.all.sort_by { |control| [control.get_day, control.period]}
 	end
 
-	def self.graphic_data_for_a_day day
-		controls = by_day day
+	def self.compareDay(day)
+		controls = []
+		Control.all.each do |control|
+			if control.day.to_date == day.to_date
+				controls.push(control)
+			end
+		end
+		return controls
+	end
+
+	def self.graphic_data_for_a_day(day)
+	#	controls = by_day day
+		controls = compareDay(day)
     dates = dates_in_controls controls
     hours = hours_from_dates dates
     levels = levels_from_controls controls
-		graphic_data = { labels: hours, data: levels }
+
+		
+
+		graphic_data = {  name: "day",
+											data: [hours.to_s.to_time.utc.to_i * 1000, levels]
+
+											
+									   }
+	  puts graphic_data.to_s
     graphic_data
 	end
 
 	def self.dates_in_controls controls
 		dates = []
+
 		controls.each { |control| dates << control.day }
 		dates
 	end
 
 	def self.hours_from_dates dates
 		hours = []
+		
 		dates.each { |date| hours << date.strftime("%I:%M%p")}
+		
 		hours
 	end
 
@@ -55,4 +77,6 @@ class Control < ActiveRecord::Base
 		controls.each { |control| levels << control.level }
 		levels
 	end
+
+
 end
