@@ -6,6 +6,7 @@ Rails.application.config.assets.precompile += %w( controls.js )
 Rails.application.config.assets.precompile += %w( staticpages.js )
 Rails.application.config.assets.precompile += %w( graphics.js )
 Rails.application.config.assets.precompile += %w( meals.js )
+Rails.application.config.assets.precompile += %w( users.js )
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )

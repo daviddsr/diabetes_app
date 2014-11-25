@@ -7,13 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-Control.create(level: 112, period: Control.periods[0], day: (Date.today() -2.days))
-
-Control.create(level: 144, period: Control.periods[3], day: 2.days.ago)
-
-Control.create(level: 122, period: Control.periods[2], day: 2.days.ago)
-
-Control.create(level: 133, period: Control.periods[1], day: 3.days.ago)
 
 Ingredient.create(name: 'Potatoes', ratio: 50)
 

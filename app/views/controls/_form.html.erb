@@ -6,7 +6,7 @@
 </ul>
 <% end %>
 
-<%= form_for @control do |f| %>
+<%= form_for [@user,@control] do |f| %>
 	<%= f.label :level %>
 	<%= f.number_field :level %>
 

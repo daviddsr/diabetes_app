@@ -1,14 +1,16 @@
-<% if user_signed_in? %>
-	<h1><%= current_user.name %> is logued in</h1>
-	<%= link_to 'Log out', destroy_user_session_path, method: 'DELETE' %>
-<% else %>
-	<h1>Not logued</h1>
-<% end %>
+
+<h1>Welcome <%= current_user.name %></h1>
+<%= link_to 'Log out', destroy_user_session_path, method: 'DELETE' %>
+<%= link_to 'Sign up', new_user_registration_path %>
 
 
 <h1><%= @user.name %> Site's</h1>
 
-<%= link_to 'New Control' %>
+<%= link_to 'New Control', new_user_control_path(current_user) %>
+
+<%= link_to 'My Controls', user_controls_path(current_user)%>
+<%= link_to 'Graphics', user_graphics_path(current_user) %>
+<%= link_to 'New Meal', new_meal_path %>
 
 
 

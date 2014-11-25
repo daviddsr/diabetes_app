@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20141124120356) do
   create_table "controls", force: true do |t|
     t.integer  "level"
     t.string   "period"
+    t.integer  "user_id"
     t.datetime "day"
     t.datetime "created_at"
     t.datetime "updated_at"

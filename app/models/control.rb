@@ -29,30 +29,22 @@ class Control < ActiveRecord::Base
 		@controls = Control.all.sort_by { |control| [control.get_day, control.period]}
 	end
 
-	def self.compareDay(day)
-		controls = []
-		Control.all.each do |control|
-			if control.day.to_date == day.to_date
-				controls.push(control)
-			end
+	def self.compareDay(day, user_id)
+		where(user_id: user_id).select do |control|
+			 control.day.to_date == day.to_date
 		end
-		return controls
 	end
 
-	def self.graphic_data_for_a_day(day)
+	def self.graphic_data_for_a_day(day, user_id)
+		
 	#	controls = by_day day
-		controls = Control.compareDay(day)
-		controls_array=[]
-	controls_array=	controls.map do |control|
+		controls= Control.compareDay(day, user_id)
+		controls_array=	controls.map do |control|
 				[control.day.strftime("%I:%M%p").to_time.utc.to_i * 1000, control.level]
+
 			end
 
-    dates = dates_in_controls controls
-    hours = hours_from_dates dates
-    levels = levels_from_controls controls
-
-		
-
+			controls_array = controls_array.sort do |a,b| a[0] <=> b[0] end
 		graphic_data = {  name: "day",
 											data: controls_array
 

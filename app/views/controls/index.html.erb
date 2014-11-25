@@ -1,18 +1,23 @@
+
+
+
 <h1>My Controls</h1>
 <p><%= notice %></p>
+
+
 
 
 <ul>
 <% @controls.each do |control| %>
 	<li><%= "Blood Sugar Control:" + control.level.to_s + " - " + control.period + " - " + control.day.to_s %></li>
-	<%= link_to "Delete", control_path(control.id), method:'delete', data: {confirm: "Are you sure?"} %>
-	<%= link_to "edit", edit_control_path(control.id)%>
+	<%= link_to "Delete", user_control_path(control, current_user), method:'delete', data: {confirm: "Are you sure?"} %>
+	<%= link_to "edit", edit_user_control_path(current_user, control)%>
 </ul>
 <% end %>
 
 
 <ul>
-<%= link_to 'New Control', new_control_path %>
+<%= link_to 'New Control', new_user_control_path(current_user) %>
 </ul>
 
 <div id='calendar'></div>
