@@ -11,10 +11,10 @@ Rails.application.routes.draw do
 
   get 'graphicscontrols' => 'graphics#graphics_evolution'
 
-  resources :users, only: [:show]  do #:path => '' 
+  # resources :users, only: [:show]  do #:path => '' 
   resources :controls # :path => '' 
   resources :graphics, only: [:index]
-end
+
   
   resources :meals, only: [:index, :new, :create]
 

@@ -23,15 +23,15 @@ class ControlsController < ApplicationController
 
 	def new
 		@control= Control.new
-		@user = User.find(params[:user_id])
+		@user = current_user
 	end
 
 	def create
-		@user = User.find(params[:user_id])
+		@user = current_user
 		@control= @user.controls.build(control_params)
 		@control.save!
-		flash[:notice] = "Congratulation, your control has been created"
-		redirect_to user_controls_path(current_user)
+		flash[:notice] = "Congratulations, your control has been created"
+		redirect_to controls_path
 	rescue ActiveRecord::RecordInvalid
 		render 'new'
 	end
@@ -39,16 +39,16 @@ class ControlsController < ApplicationController
 
 	def edit
 		@control = Control.find(params[:id])
-		@user = User.find(params[:user_id])
+		
 	end
 
 
 	def update
-		@user = User.find(params[:user_id])
+		@user = current_user
 		@control = Control.find(params[:id])
 		if @control.update_attributes(control_params)
-			flash[:notice] = "Congratulation, your control has been updated"
-			redirect_to user_controls_path(current_user)
+			flash[:notice] = "Congratulations, your control has been updated"
+			redirect_to controls_path(current_user)
 		else
 			@errors = @control.errors.full_messages
 			render 'edit'
@@ -63,8 +63,8 @@ class ControlsController < ApplicationController
 	def destroy
 		@control= Control.find(params[:id])
 		if @control.delete
-			flash[:notice] = "Congratulation, your control has been removed"
-			redirect_to user_controls_path(current_user)
+			flash[:notice] = "Congratulations, your control has been removed"
+			redirect_to controls_path
 		end
 	end
 	private
