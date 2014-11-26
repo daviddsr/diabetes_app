@@ -1,0 +1,47 @@
+/*.thumbnail {
+	height: 100px;
+	width: 300px;
+	margin-left: 100px;
+	display: inline-block;
+}
+
+.thumbnailright {
+	height: 100px;
+	width: 300px;
+	margin-right: 100px;
+	display: inline-block;
+}
+
+.thumbnailright {
+	height: 100px;
+	width: 300px;
+	margin: 0 auto;
+	display: inline-block;
+}*/
+
+.row {
+	display: inline-block;
+	height: 100px;
+	width: 300px;
+	margin-left: 300px;
+}
+
+
+
+.thumbnail {
+	height: 100px;
+	width: 300px;
+	margin-left: 275px;
+}
+
+.red {
+	background-color: red;
+}
+
+.blue {
+	background-color: blue;
+}
+
+.yellow {
+	background-color: yellow;
+}
