@@ -8,6 +8,7 @@
 .fc {
 	direction: ltr;
 	text-align: left;
+
 }
 
 .fc-rtl {
@@ -311,7 +312,7 @@ previous button's border...
 
 .fc table {
 	margin: 0 auto;
-	width: 1180px;
+	width: 900px;
 	table-layout: fixed;
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -575,10 +576,11 @@ a.fc-more:hover {
 --------------------------------------------------------------------------------------------------*/
 
 .fc-toolbar {
-	width: 1180px;
-	margin: 0 auto;
+	width: 900px;
+	margin-left: 0px;
 	text-align: center;
 	margin-bottom: 1em;
+	display: inline-block;
 }
 
 .fc-toolbar .fc-left {
@@ -650,6 +652,7 @@ a.fc-more:hover {
 
 .fc-view, /* scope positioning and z-index's for everything within the view */
 .fc-view > table { /* so dragged elements can be above the view's main element */
+	margin-right: 50px;
 	position: relative;
 	z-index: 1;
 }
@@ -818,7 +821,7 @@ a.fc-more:hover {
 --------------------------------------------------------------------------------------------------*/
 
 .fc-slats td {
-	height: 3em;
+	height: 2em;
 	border-bottom: 0; /* each cell is responsible for its top border */
 }
 

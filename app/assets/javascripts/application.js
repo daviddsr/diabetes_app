@@ -17,3 +17,4 @@
 //= require fullcalendar
 //= require Chart
 //= require highcharts
+//= require datetimepicker

@@ -7,6 +7,9 @@ class ControlsController < ApplicationController
 		
 
 		@user= current_user
+		@control= Control.new
+
+		@control_last= @user.controls.last
 
 		@controls= @user.controls.order_by_date
 		# @controls = Control.order_by_date
@@ -22,8 +25,7 @@ class ControlsController < ApplicationController
 	end
 
 	def new
-		@control= Control.new
-		@user = current_user
+		
 	end
 
 	def create

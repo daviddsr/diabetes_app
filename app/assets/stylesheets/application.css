@@ -14,4 +14,5 @@
  *= require_self
  *= require bootstrap.min.css
  *= require fullcalendar.css
+ *= require bootstrap-datetimepicker.min.css
  */

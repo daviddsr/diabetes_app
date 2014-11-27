@@ -24,6 +24,8 @@ $(document).ready(function() {
             console.log(controls[0])
 
             $('#calendar').fullCalendar({
+                aspectRatio: 1,
+                contentHeight: 500,
                 scrollTime: '24:00:00',
                 minTime: '07:00:00',
                 maxTime: '24:00:00',
@@ -56,4 +58,6 @@ $(document).ready(function() {
 });
 
 
-
+$(function () {
+                $('#datetimepicker1').datetimepicker();
+            });

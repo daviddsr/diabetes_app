@@ -20,7 +20,6 @@
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li class="active"><%= link_to 'Home', controls_path %></li>
-                <li><%= link_to 'New Control', new_control_path %></li>
                 <li><%= link_to 'Graphics', graphics_path %></li>
                 <li><%= link_to 'New Meal', new_meal_path %></li>
 
@@ -44,34 +43,31 @@
       </div>
     </div>
 
-
+<%= render 'form' %>
 
 <p><%= notice %></p>
 
 
-<div class="rowleft">
-  
-  
-  
-</div>
-
-<div class="rowmiddle">
-  
-    
-  
-</div>
-
-<div class="rowright">
-  
-    
-  
-</div>
-
-
-
-
-
 <div id='calendar'></div>
+
+<div class="rowtop">
+  <div class="col-md-4">
+    <p class= "textinfo">Last control</p><br/>
+    <p class="control"><%= @control_last.level %></p>
+  </div>
+  </div>
+
+  <div class="rowmiddle">
+  <div class="col-md-4">Hola</div>
+  </div>
+
+  <div class="rowdown">
+  <div class="col-md-4">Hola</div>
+  </div>
+
+  <div class="rowbottom">
+  <div class="col-md-4">Hola</div>
+  </div>
 
 
 <ul>
@@ -81,3 +77,20 @@
 	<%= link_to "edit", edit_control_path(control)%>
 </ul>
 <% end %>
+
+
+<div class="menusuperior">
+<div class="rowleft">
+
+   
+  
+  
+  
+  
+
+
+
+
+
+
+
