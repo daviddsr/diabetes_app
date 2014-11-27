@@ -82,7 +82,7 @@
 	width: 180px;
 	font-size: 20px;
 	font-weight: bold;
-	text-align: center;
+	margin-left: 0px;
 }
 
 .menusuperior {
@@ -98,13 +98,21 @@
 .lastcontrol {
 	display: inline-block;
 	padding: 0px;
-	margin: 0px;
 	text-align: center;
 	position:relative;
 	left: 15%;
 	font-size: 25px;
 	font-weight: bold;
 	
+}
+
+.controls_per_day {
+	display: inline-block;
+	padding: 0px;
+	position:relative;
+	left: 40%;
+	font-size: 25px;
+	font-weight: bold;
 }
 
 .fc-unthemed {
@@ -131,6 +139,8 @@ body .fc {
 	width: 200px;
 }
 
-
+.form_inline {
+	width: 800px;
+}
 
 

@@ -13,7 +13,9 @@ class ControlsController < ApplicationController
 
 		@controls= @user.controls.order_by_date
 
-		@control_media = Control.media (current_user.id)
+		@controls_average = Control.controls_average (current_user.id)
+
+		@controls_average_day = Control.controls_day_average (current_user.id)
 		# @controls = Control.order_by_date
 	end
 
@@ -32,7 +34,11 @@ class ControlsController < ApplicationController
 
 	def create
 		@user = current_user
-		@control= @user.controls.build(control_params)
+		control_params2 ={}
+		control_params2[:level] = control_params[:level]
+		control_params2[:period] = control_params[:period]
+		control_params2[:day]=DateTime.strptime(control_params[:day],'%m/%d/%Y %I:%M %p')
+		@control= @user.controls.build(control_params2)
 		@control.save!
 		flash[:notice] = "Congratulations, your control has been created"
 		redirect_to controls_path

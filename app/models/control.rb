@@ -7,13 +7,13 @@ class Control < ActiveRecord::Base
 	scope :by_day, ->(day) { where("day like ?", "#{day}%") }
 
 	@@periods= [
-		'1.- pre-breakfast',
-		'2.- post-breakfast',
-		'3.- pre-lunch',
-		'4.- post-lunch',
-		'5.- afternoon',
-		'6.- pre-dinner',
-		'7.- post-dinner'
+		'pre-breakfast',
+		'post-breakfast',
+		'pre-lunch',
+		'post-lunch',
+		'afternoon',
+		'pre-dinner',
+		'post-dinner'
 	]
 
 	def self.periods
@@ -74,15 +74,31 @@ class Control < ActiveRecord::Base
 		levels
 	end
 
-	def self.media (user_id)
+	def self.controls_average (user_id)
 
 		controls = Control.where(user_id: user_id)
 		sum= 0
 		Control.all.where(user_id: user_id).each do |control|
 			
-		sum= sum + control.level
+		sum = sum + control.level
 		end
-		media= sum/controls.length
+		media = sum/controls.length
 		media
+	end
+
+	def self.controls_day_average (user_id)
+
+		controls= Control.where(user_id: user_id)
+		dates= controls.all.map { |control| control.day.strftime("%d-%m-%Y") }
+		days = []
+		dates.each do |date|
+    	unless days.include?(date)
+    		days.push(date)
+    		days
+    	end
+    end
+
+    number_control_average = controls.length / days.length
+    number_control_average
 	end
 end
