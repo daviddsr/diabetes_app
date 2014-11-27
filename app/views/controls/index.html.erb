@@ -52,13 +52,16 @@
 
 <div class="rowtop">
   <div class="col-md-4">
-    <p class= "textinfo">Last control</p><br/>
-    <p class="control"><%= @control_last.level %></p>
+    <p class= "textinfo">Last control</p>
+    <p class="lastcontrol"><%= @control_last.level %> mg/dl</p>
   </div>
-  </div>
+</div>
 
   <div class="rowmiddle">
-  <div class="col-md-4">Hola</div>
+  <div class="col-md-4">
+    <p class= "textaverage">Controls average</p>
+    <p class="lastcontrol"><%= @control_media %> mg/dl</p>
+  </div>
   </div>
 
   <div class="rowdown">

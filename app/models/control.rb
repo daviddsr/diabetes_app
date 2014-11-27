@@ -74,5 +74,15 @@ class Control < ActiveRecord::Base
 		levels
 	end
 
+	def self.media (user_id)
 
+		controls = Control.where(user_id: user_id)
+		sum= 0
+		Control.all.where(user_id: user_id).each do |control|
+			
+		sum= sum + control.level
+		end
+		media= sum/controls.length
+		media
+	end
 end

@@ -12,6 +12,8 @@ class ControlsController < ApplicationController
 		@control_last= @user.controls.last
 
 		@controls= @user.controls.order_by_date
+
+		@control_media = Control.media (current_user.id)
 		# @controls = Control.order_by_date
 	end
 

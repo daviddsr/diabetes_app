@@ -77,6 +77,14 @@
 	text-align: center;
 }
 
+.textaverage {
+	padding: 5px;
+	width: 180px;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+}
+
 .menusuperior {
 	margin: 0 auto;
 	text-align: center;
@@ -87,7 +95,15 @@
 	margin: 10px;
 }
 
-h1 {
+.lastcontrol {
+	display: inline-block;
+	padding: 0px;
+	margin: 0px;
+	text-align: center;
+	position:relative;
+	left: 15%;
+	font-size: 25px;
+	font-weight: bold;
 	
 }
 
@@ -110,9 +126,11 @@ body .fc {
 	display: inline-block;
 }
 
-.control {
-	font-size: 40px;
-	
+.col-md-4 {
+	position:absolute;
+	width: 200px;
 }
+
+
 
 
