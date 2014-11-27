@@ -143,4 +143,52 @@ body .fc {
 	width: 800px;
 }
 
+.home {
+	height: 645px;
+	width: 100%;
+	background-color: grey;
+	display: inline-block;
+	text-align: center;
+}
+
+.wraptitle {
+	margin-top: 100px;
+	
+}
+
+.title {
+	font-size: 150px;
+	color: white;
+	text-align: center;
+
+
+}
+
+.logins {
+	margin-top: 60px;
+	display: inline-block;
+	width: 550px;
+	height: 200px;
+}
+
+.btn {
+	width: 200px;
+	background-color: black;
+
+
+}
+
+.leftbutton {
+	float: left;
+}
+
+.rightbutton {
+	float: right;
+}
+
+.buttontext {
+	color: white;
+}
+
+
 

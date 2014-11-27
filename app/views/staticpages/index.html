@@ -1,16 +1,32 @@
-<h1>Diabetes App</h1>
 
-<% if user_signed_in? %>
-	<p><%= current_user.name %> is logued in</p>
-	<p><%= link_to 'Go to my page', controls_path %></p>
-	<%= link_to 'Log out', destroy_user_session_path, method: 'DELETE' %>
-<% else %>
-	<%= link_to 'Log in', new_user_session_path %>
-	<%= link_to 'Sign up', new_user_registration_path %>
+
+<div class="home">
+	<div class="wraptitle">
+		<h1 class="title">Diabetes App</h1>
+	</div>
+	<div class="logins">
+	<% if user_signed_in? %>
+	<p>
+  <button type="button" class="btn btn-default btn-lg leftbutton"><%= link_to 'Go to my page', controls_path, :class => "buttontext" %></button>
+  <button type="button" class="btn btn-default btn-lg rightbutton"><%= link_to 'Log out', destroy_user_session_path, method: 'DELETE', :class => "buttontext" %></button>
+</p>
 	
-
-
+<% else %><p>
+  <button type="button" class="btn btn-default btn-lg leftbutton"><%= link_to 'Log in', new_user_session_path, :class => "buttontext" %></button>
+  <button type="button" class="btn btn-default btn-lg rightbutton"><%= link_to 'Sign up', new_user_registration_path, :class => "buttontext" %></button>
+</p>
 <% end %>
+</div>
+
+
+
+
+
+
+
+
+
+
 
 
 
