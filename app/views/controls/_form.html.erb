@@ -9,7 +9,7 @@
 
 	
 	<%= form_for @control, :html => {:class => 'form-inline'} do |f| %>
-
+		<p class="new_control_text">New Control</p>
 		  <div class="form-group">
 		  	<div class="input-group">
 		      <%= f.label :level, class: "sr-only", for: "exampleInputEmail2" %>
@@ -33,8 +33,11 @@
 		        </div>
 		     </div>
 		 </div>
-
-		    
-		  <%= f.submit "Save", type:"submit", class: "btn btn-default" %>
+		
+		<div class="select_period">
+		   <%= f.select :period, options_for_select([['pre-breakfast', 1], ['post-breakfast', 2],['pre-lunch', 3],['post-lunch', 4],['afternoon', 5],['pre-dinner', 6],['post-dinner', 7]]), {}, class: "form-control" %>
+        </div>  	
+        	
+		  <%= f.submit "Save", type:"submit", class: "btn btn-default button-save" %>
 
 	<% end %>
