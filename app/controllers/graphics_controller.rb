@@ -9,6 +9,9 @@ before_action :authenticate_user!
 
 		@user= current_user
 		@controls= @user.controls
+		@control_last= @user.controls.last
+		@controls_average = Control.controls_average (current_user.id)
+		@controls_average_day = Control.controls_day_average (current_user.id)
 
 	end
 

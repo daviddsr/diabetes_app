@@ -1,22 +1,25 @@
-Rails.application.routes.draw do
+        Rails.application.routes.draw do
 
-  root 'staticpages#index'
+          root 'staticpages#index'
 
-  devise_for :users # :path => '',
+          devise_for :users # :path => '',
 
- #  path_names: {sign_in: 'login', sign_up: 'registro'},
- # controllers: {sessiones: 'users/controls'}
+         #  path_names: {sign_in: 'login', sign_up: 'registro'},
+         # controllers: {sessiones: 'users/controls'}
 
-  get '/controls/calendar' => 'controls#event'
+          get '/controls/calendar' => 'controls#event'
 
-  get 'graphicscontrols' => 'graphics#graphics_evolution'
+          get 'graphicscontrols' => 'graphics#graphics_evolution'
 
-  # resources :users, only: [:show]  do #:path => '' 
-  resources :controls # :path => '' 
-  resources :graphics, only: [:index]
+          get 'months' => 'controls#months'
 
-  
-  resources :meals, only: [:index, :new, :create]
+
+          # resources :users, only: [:show]  do #:path => '' 
+          resources :controls # :path => '' 
+          resources :graphics, only: [:index]
+
+          
+          resources :meals, only: [:index, :new, :create]
 
 
 

@@ -218,4 +218,14 @@ body .fc {
 	float: right;
 	margin-right: 100px;
 	display: inline-block;
+	margin-top: 50px;
+}
+
+li {
+	list-style: none;
+}
+
+.november-controls {
+	width: 800px;
+	margin-left: 115px;
 }

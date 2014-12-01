@@ -29,4 +29,15 @@
       </div>
 </div>
 
-<%= render 'form' %>
+
+<div class="november-controls">
+<h1>Controls</h1>
+
+<ul>
+<% @controls.each do |control| %>
+	<li><%= "Blood Sugar Control:" + control.level.to_s + " - " + control.period + " - " + control.day.to_s %></li>
+	<%= link_to "Delete", control_path(control.id), method:'delete', data: {confirm: "Are you sure?"} %>
+	<%= link_to "edit", edit_control_path(control)%>
+</ul>
+<% end %>
+</div>

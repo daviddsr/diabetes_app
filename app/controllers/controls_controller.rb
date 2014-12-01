@@ -25,8 +25,12 @@ class ControlsController < ApplicationController
 		render json: @controls if request.xhr?
 	end
 
-	def show
+	def months
+		@user= current_user
+		@controls= @user.controls.order_by_date
 	end
+
+	
 
 	def new
 		
@@ -43,7 +47,7 @@ class ControlsController < ApplicationController
 		flash[:notice] = "Congratulations, your control has been created"
 		redirect_to controls_path
 	rescue ActiveRecord::RecordInvalid
-		render 'new'
+		render 'index'
 	end
 
 
@@ -74,7 +78,7 @@ class ControlsController < ApplicationController
 		@control= Control.find(params[:id])
 		if @control.delete
 			flash[:notice] = "Congratulations, your control has been removed"
-			redirect_to controls_path
+			redirect_to months_path
 		end
 	end
 	private
