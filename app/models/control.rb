@@ -101,4 +101,17 @@ class Control < ActiveRecord::Base
     number_control_average = controls.length / days.length
     number_control_average
 	end
+
+
+	def self.lastcontrol (user_id)
+
+	controls = Control.where(user_id: user_id).sort_by { |control| [control.day]}
+	lastcontrol = controls.last.level
+	lastcontrol
+
+	end
+	
+
+	
+
 end

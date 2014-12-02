@@ -9,7 +9,9 @@ class ControlsController < ApplicationController
 		@user= current_user
 		@control= Control.new
 
-		@control_last= @user.controls.last
+
+		@control_last = Control.lastcontrol (current_user.id)
+
 
 		@controls= @user.controls.order_by_date
 
