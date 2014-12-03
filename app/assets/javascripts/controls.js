@@ -24,10 +24,11 @@ $(document).ready(function() {
             console.log(controls[0])
 
             $('#calendar').fullCalendar({
+                editable: true,
                 aspectRatio: 1,
                 contentHeight: 500,
                 scrollTime: '24:00:00',
-                minTime: '07:00:00',
+                minTime: '01:00:00',
                 maxTime: '24:00:00',
                 defaultView: 'agendaWeek',
                 header:{left:"prev,next,today",
@@ -49,6 +50,12 @@ $(document).ready(function() {
                         element.css('background-color', 'yellow');
                     }
                 },
+                eventClick: function(event, element) {
+
+
+                $('#calendar').fullCalendar('updateEvent', event);
+
+    }
                 //
         // put your options and callbacks here
     })
@@ -56,6 +63,8 @@ $(document).ready(function() {
     }
 
 });
+
+
 
 
 $(function () {

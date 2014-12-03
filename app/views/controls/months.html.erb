@@ -29,15 +29,45 @@
       </div>
 </div>
 
+<div class="col-md-16 list-controls">
+  <div class="col-md-12 list-controls2">
 
-<div class="november-controls">
-<h1>Controls</h1>
+<h1>My Controls</h1>
 
-<ul>
-<% @controls.each do |control| %>
-	<li><%= "Blood Sugar Control:" + control.level.to_s + " - " + control.period + " - " + control.day.to_s %></li>
-	<%= link_to "Delete", control_path(control.id), method:'delete', data: {confirm: "Are you sure?"} %>
-	<%= link_to "edit", edit_control_path(control)%>
+
+<ul class="list-group">
+<% @controls_ordered.each do |control| %>
+	<li class="list-group-item"><%= "Blood Sugar Level:" + control.level.to_s + "  /  " + control.period.to_s + "  /  " + control.day.to_s %></li>
+	<button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-remove" aria-hidden="true"><%= link_to "Delete", control_path(control.id), method:'delete', data: {confirm: "Are you sure?"} %></span></button>
+	<button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-pencil" aria-hidden="true"><%= link_to "edit", edit_control_path(control)%></span></button>
 </ul>
 <% end %>
+
 </div>
+</div>
+
+<aside>
+<div class="rowtop">
+  <div class="col-md-4">
+    <p class= "textinfo">Last control</p>
+    <p class="lastcontrol"><%= @control_last %> mg/dl</p>
+  </div>
+</div>
+
+  <div class="rowmiddle">
+  <div class="col-md-4">
+    <p class= "textaverage">Controls average</p>
+    <p class="lastcontrol"><%= @controls_average %> mg/dl</p>
+  </div>
+  </div>
+
+  <div class="rowdown">
+  <div class="col-md-4">
+    <p class= "textaverage">Controls by day</p>
+    <p class="controls_per_day"><%= @controls_average_day %></div></p>
+  </div>
+
+  <div class="rowbottom">
+  <div class="col-md-4"></div>
+  </div>
+</aside>

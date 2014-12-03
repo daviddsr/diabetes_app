@@ -25,9 +25,13 @@ class Control < ActiveRecord::Base
 		calendar_day
 	end
 
-	def self.order_by_date
-		@controls = Control.all.sort_by { |control| [control.get_day, control.period]}
+	def self.order_by_date (user_id)
+		controls = Control.where(user_id: user_id)
+		controls = controls.sort_by { |control| [control.day]}
+		controls = controls.sort do |a,b| a[0] <=> b[0] end
+			controls = controls.reverse
 	end
+
 
 	def self.compareDay(day, user_id)
 		where(user_id: user_id).select do |control|

@@ -13,12 +13,12 @@ class ControlsController < ApplicationController
 		@control_last = Control.lastcontrol (current_user.id)
 
 
-		@controls= @user.controls.order_by_date
+		
 
 		@controls_average = Control.controls_average (current_user.id)
 
 		@controls_average_day = Control.controls_day_average (current_user.id)
-		# @controls = Control.order_by_date
+		
 	end
 
 	def event
@@ -29,9 +29,22 @@ class ControlsController < ApplicationController
 
 	def months
 		@user= current_user
-		@controls= @user.controls.order_by_date
+
+		@controls_ordered = Control.order_by_date(current_user.id)
+
+		@control_last = Control.lastcontrol (current_user.id)
+
+
+		
+
+		@controls_average = Control.controls_average (current_user.id)
+
+		@controls_average_day = Control.controls_day_average (current_user.id)
+		
+ 
 	end
 
+	
 	
 
 	def new

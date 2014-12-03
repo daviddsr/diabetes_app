@@ -23,9 +23,9 @@
 	
 	background-color: red;
 	float: left;
-	margin-top: 52px;
+	/*margin-top: 52px;*/
 	margin-right: 50px;
-	margin-left: 95px;
+	/*margin-left: 95px;*/
 	border: 2px solid black;
 	
 }
@@ -38,7 +38,7 @@
 	float: left;
 	margin-top: 28px;
 	margin-right: 50px;
-	margin-left: 95px;
+	/*margin-left: 95px;*/
 	border: 2px solid black;
 	
 }
@@ -51,7 +51,7 @@
 	float: left;
 	margin-top: 28px;
 	margin-right: 50px;
-	margin-left: 95px;
+	/*margin-left: 95px;*/
 	border: 2px solid black;
 	
 }
@@ -64,7 +64,7 @@
 	float: left;
 	margin-top: 28px;
 	margin-right: 50px;
-	margin-left: 95px;
+	/*margin-left: 95px;*/
 	border: 2px solid black;
 	
 }
@@ -117,8 +117,10 @@
 
 .fc-unthemed {
 	display: inline-block;
-	width: 1000px;
+	width: 900px;
 	float: right;
+	margin-right: 75px;
+	margin-top: 50px;
 }
 
 .fc-view-container {
@@ -225,7 +227,43 @@ li {
 	list-style: none;
 }
 
-.november-controls {
+/*.list-group {
+	width: 400px;
+}*/
+
+.list-controls {
 	width: 800px;
-	margin-left: 115px;
+	/*margin-left: 600px;*/
+	display: inline-block;
+	margin-top: 25px;
+	margin-left: 50px;
 }
+
+aside {
+	width: 200px;
+	display: inline-block;
+	float: left;
+	margin-left: 105px;
+	margin-right: 20px;
+	margin-top: 50px;
+}
+
+.col-md-8 {
+	display:inline-block;
+	float: right;
+}
+
+.form {
+	float: left;
+	margin-left: 250px;
+}
+
+
+
+/*.list-controls2 {
+	display: inline-block;
+}*/
+
+/*.list-group-item {
+	display: inline-block;
+}*/
