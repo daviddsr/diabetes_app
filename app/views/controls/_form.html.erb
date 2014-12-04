@@ -1,9 +1,11 @@
 <% if @control.errors.any? %>
-<div class="alert alert-error fade in">
+
 
 <% @control.errors.full_messages.each do |error_message| %>
-   <li><p><%= error_message %></p> </li>
-   </div>
+<div class="alert alert-danger fade in">
+	<button class="close" data-dismiss="alert">×</button>
+   <%= error_message %>
+</div>
 <% end %>
 
 <% end %>

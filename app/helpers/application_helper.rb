@@ -4,9 +4,9 @@ module ApplicationHelper
     if flash_type == "success"
         "alert-success"
     elsif flash_type == "error"
-        "alert-error"
+        "alert-danger"
     elsif flash_type == "alert"
-        "alert-block"
+        "alert-warning"
     elsif flash_type == "notice"
         "alert-info"
     else

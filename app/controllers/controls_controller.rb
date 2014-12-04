@@ -58,11 +58,13 @@ class ControlsController < ApplicationController
 		control_params2[:period] = control_params[:period]
 		control_params2[:day]=DateTime.strptime(control_params[:day],'%m/%d/%Y %I:%M %p')
 		@control= @user.controls.build(control_params2)
-		@control.save!
+		if @control.save
 		flash[:notice] = "Congratulations, your control has been created"
 		redirect_to controls_path
-	rescue ActiveRecord::RecordInvalid
+		else
+		flash[:error]
 		render 'index'
+		end
 	end
 
 
