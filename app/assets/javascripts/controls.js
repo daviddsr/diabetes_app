@@ -12,8 +12,9 @@ $(document).ready(function() {
             var level= controls[i].level
             var day= controls[i].day
             var period=controls[i].period
+            var idevent = controls[i].id
             console.log(controls[i].period)
-            arrayControls.push({title:level, start:day, description:"period", textColor: 'black'})
+            arrayControls.push({title:level, start:day, description:"period", id:idevent, textColor: 'black'})
         }
             return arrayControls;
     }
@@ -50,8 +51,14 @@ $(document).ready(function() {
                         element.css('background-color', 'yellow');
                     }
                 },
-                eventClick: function(event, element) {
-
+                eventClick: function(date, jsEvent, view) {
+                    console.log(date.id)
+                    console.log(jsEvent)
+                    console.log(view)
+                     $.ajax({
+                      type: "GET",
+                      url: "controls/"+date.id+"/edit",
+                      });
 
                 $('#calendar').fullCalendar('updateEvent', event);
 

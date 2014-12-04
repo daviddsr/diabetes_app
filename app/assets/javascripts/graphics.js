@@ -28,7 +28,19 @@ $(function () {
             title: {
                 text: 'Glucose level (mg/dl)'
             },
-            min: 0
+            min: 0,
+        
+        plotBands: [{ // Light air
+                from: 80,
+                to: 120,
+                color: 'rgba(68, 170, 213, 0.1)',
+                label: {
+                    text: 'Controls objective',
+                    style: {
+                        color: '#606060'
+                    }
+                }
+            }]
         },
         tooltip: {
             headerFormat: '<b>{series.name}</b><br>',
