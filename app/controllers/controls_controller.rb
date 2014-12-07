@@ -95,7 +95,7 @@ class ControlsController < ApplicationController
 		@control= Control.find(params[:id])
 		if @control.delete
 			flash[:notice] = "Congratulations, your control has been removed"
-			redirect_to months_path
+			redirect_to controls_path
 		end
 	end
 	private
