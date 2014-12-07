@@ -51,16 +51,18 @@ $(document).ready(function() {
                         element.css('background-color', 'yellow');
                     }
                 },
-                eventClick: function(date, jsEvent, view) {
-                    console.log(date.id)
-                    console.log(jsEvent)
-                    console.log(view)
-                     $.ajax({
-                      type: "GET",
-                      url: "controls/"+date.id+"/edit",
-                      });
+                eventClick: function(calEvent, jsEvent, view) {
 
-                $('#calendar').fullCalendar('updateEvent', event);
+                    window.location.replace("/controls/"+calEvent.id+"/edit");
+                    // console.log(calEvent)
+                    // console.log(jsEvent)
+                    // console.log(view)
+                    //  $.ajax({
+                    //   type: "GET",
+                    //   url: "/controls/"+calEvent.id+"/edit",
+                    //   });
+
+                // $('#calendar').fullCalendar('updateEvent', calEvent);
 
     }
                 //
