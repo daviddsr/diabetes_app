@@ -15,7 +15,7 @@
 
 
           # resources :users, only: [:show]  do #:path => '' 
-          resources :controls # :path => '' 
+          resources :controls, except: [:new]# :path => '' 
           resources :graphics, only: [:index]
 
           
