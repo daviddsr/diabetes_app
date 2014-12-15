@@ -3,14 +3,11 @@ class ControlsController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-
-		
-
 		@user= current_user
 		@control= Control.new
-		@control_last = Control.lastcontrol (current_user.id)
-		@controls_average = Control.controls_average (current_user.id)
-		@controls_average_day = Control.controls_day_average (current_user.id)
+		# @control_last = Control.lastcontrol (current_user.id)
+		# @controls_average = Control.controls_average (current_user.id)
+		# @controls_average_day = Control.controls_day_average (current_user.id)
 		@controls = Control.all
 	end
 
@@ -28,13 +25,6 @@ class ControlsController < ApplicationController
 		@controls_average_day = Control.controls_day_average (current_user.id)
 		
  
-	end
-
-	
-	
-
-	def new
-		
 	end
 
 	def create

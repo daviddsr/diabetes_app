@@ -14,5 +14,13 @@ Ingredient.create(name: 'Rice', ratio: 15)
 
 Ingredient.create(name: 'Banana', ratio: 50)
 
+user = User.create!(
+        name: "Paco",
+        email: "meloinvento@invento.com",
+      password: "123456789",
+      password_confirmation: "123456789"
+      )
+
+Control.create(level: 100, period: "pre-breakfast", day: DateTime.now, user_id: user.id)
 
 

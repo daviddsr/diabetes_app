@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+ruby '2.1.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
 # Use sqlite3 as the database for Active Record
@@ -37,4 +37,12 @@ gem 'devise'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+  gem 'pry'
+  gem 'validates_timeliness', '~> 3.0'
+end
+
+group :test do
+  gem 'shoulda-matchers', require: false
 end
