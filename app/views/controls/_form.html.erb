@@ -13,7 +13,7 @@
 
 
 	<div class="col-md-8 form">
-	<%= form_for @control, :html => {:class => 'form-inline'} do |f| %>
+	<%= form_for [@user, @control], :html => {:class => 'form-inline'} do |f| %>
 		<p class="new_control_text">New Control</p>
 		  <div class="form-group">
 		  	<div class="input-group">

@@ -7,7 +7,7 @@
 	<div class="logins">
 	<% if user_signed_in? %>
 	<p>
-  <button type="button" class="btn btn-default btn-lg leftbutton"><%= link_to 'Go to my page', controls_path, :class => "buttontext" %></button>
+  <button type="button" class="btn btn-default btn-lg leftbutton"><%= link_to 'Go to my page', user_controls_path(current_user.name), :class => "buttontext" %></button>
   <button type="button" class="btn btn-default btn-lg rightbutton"><%= link_to 'Log out', destroy_user_session_path, method: 'DELETE', :class => "buttontext" %></button>
 </p>
 	

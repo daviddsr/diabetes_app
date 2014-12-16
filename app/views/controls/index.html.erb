@@ -19,9 +19,9 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li class="active"><%= link_to 'Home', controls_path %></li>
-                <li><%= link_to 'Graphics', graphics_path %></li>
-                <li><%= link_to 'New Meal', new_meal_path %></li>
+                <li class="active"><%= link_to 'Home', user_controls_path(:user_id) %></li>
+                <li><%= link_to 'Graphics', user_graphics_path(:user_id) %></li>
+                <li><%= link_to 'New Meal', new_user_meal_path(:user_id) %></li>
                 <li><%= link_to 'My Controls', months_path %></li>
                     
               </ul>

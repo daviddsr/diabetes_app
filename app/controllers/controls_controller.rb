@@ -1,6 +1,7 @@
 class ControlsController < ApplicationController
 
 	before_action :authenticate_user!
+	before_action :redirect_if_not_current_user, only: :index
 
 	def index
 		@user= current_user
@@ -9,11 +10,12 @@ class ControlsController < ApplicationController
 		# @controls_average = Control.controls_average (current_user.id)
 		# @controls_average_day = Control.controls_day_average (current_user.id)
 		@controls = Control.all
+		
 	end
 
 	def event
-		@user= current_user
-		@controls=@user.controls.all
+		@user = current_user
+		@controls = @user.controls.all
 		render json: @controls if request.xhr?
 	end
 
@@ -36,7 +38,7 @@ class ControlsController < ApplicationController
 		@control= @user.controls.build(control_params2)
 		@control.save!
 		flash[:notice] = "Congratulations, your control has been created"
-		redirect_to controls_path
+		redirect_to user_controls_path
 	rescue ActiveRecord::RecordInvalid
 		flash[:error]
 		render 'index'
@@ -77,5 +79,11 @@ class ControlsController < ApplicationController
 	private
 	def control_params
 		params.require(:control).permit(:level, :period, :day)
+	end
+
+	def redirect_if_not_current_user
+		if params[:user_id] != current_user.name
+			redirect_to user_controls_path current_user.name
+		end
 	end
 end

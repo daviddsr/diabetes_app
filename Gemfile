@@ -41,6 +41,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'pry'
   gem 'validates_timeliness', '~> 3.0'
+  gem 'friendly_id', '~> 5.0.0'
 end
 
 group :test do

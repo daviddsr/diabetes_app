@@ -14,13 +14,11 @@
           get 'months' => 'controls#months'
 
 
-          # resources :users, only: [:show]  do #:path => '' 
-          resources :controls, except: [:new]# :path => '' 
-          resources :graphics, only: [:index]
-
-          
-          resources :meals, only: [:index, :new, :create]
-
+          resources :users, only: [:show]  do #:path => '' 
+            resources :controls, except: [:new]# :path => '' 
+            resources :graphics, only: [:index]
+            resources :meals, only: [:index, :new, :create]
+          end
 
 
   # The priority is based upon order of creation: first created -> highest priority.
