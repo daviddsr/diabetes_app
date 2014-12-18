@@ -144,7 +144,7 @@ RSpec.describe Control, :type => :model do
         expect(graphic_data_for_all_days).to eq([])
       end
 
-      it "if there are 3 controls in one day and another one other day, it returns a couple of hashes with data listed by days" do
+      xit "if there are 3 controls in one day and another one other day, it returns a couple of hashes with data listed by days" do
         time = DateTime.now
         control = FactoryGirl.create(
           :control, 
