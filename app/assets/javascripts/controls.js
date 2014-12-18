@@ -9,10 +9,10 @@ $(document).ready(function() {
     function allControls(controls) {
         var arrayControls=[];
         for (i in controls) {
-            var level= controls[i].level
-            var day= controls[i].day
-            var period=controls[i].period
-            var idevent = controls[i].id
+            var level= controls[i].level;
+            var day= controls[i].day;
+            var period=controls[i].period;
+            var idevent = controls[i].id;
             console.log(controls[i].period)
             arrayControls.push({title:level, start:day, description:"period", id:idevent, textColor: 'black'})
         }
