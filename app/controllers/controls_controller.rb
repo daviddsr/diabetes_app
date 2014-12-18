@@ -2,15 +2,15 @@ class ControlsController < ApplicationController
 
 	before_action :authenticate_user!
 	before_action :redirect_if_not_current_user, only: :index
+	before_action :fetch_current_user, only: :index
 
 	def index
-		@user= current_user
 		@control= Control.new
 		@control_last = Control.last_control_level (current_user.id)
 		@controls_average = Control.levels_average (current_user.id)
 		@controls_average_day = Control.controls_by_day_average (current_user.id)
 		@controls = Control.all
-		
+
 	end
 
 	def calendar
@@ -22,9 +22,9 @@ class ControlsController < ApplicationController
 			hash[:id] = control.id
 			hash[:level] = control.level
 			hash[:day] = control.day.strftime('%m/%d/%Y %I:%M %p')
-			
+
 			array.push(hash)
-			
+
 		end
 		render :json => array
 	end
@@ -35,8 +35,6 @@ class ControlsController < ApplicationController
 		@control_last = Control.last_control_level (current_user.id)
 		@controls_average = Control.levels_average (current_user.id)
 		@controls_average_day = Control.controls_by_day_average (current_user.id)
-		
- 
 	end
 
 	def create
@@ -56,10 +54,8 @@ class ControlsController < ApplicationController
 
 
 	def edit
-		# if request.xhr?
-			@user = current_user
-			@control = Control.find(params[:id])
-		# end
+		@user = current_user
+		@control = Control.find(params[:id])
 	end
 
 
@@ -78,7 +74,6 @@ class ControlsController < ApplicationController
 
 	def delete
 		@control= Control.find(params[:id])
-
 	end
 
 	def destroy
@@ -88,7 +83,13 @@ class ControlsController < ApplicationController
 			redirect_to controls_path
 		end
 	end
+
 	private
+
+	def fetch_current_user
+		@user = current_user
+	end
+
 	def control_params
 		params.require(:control).permit(:level, :period, :day)
 	end
