@@ -7,7 +7,7 @@
          #  path_names: {sign_in: 'login', sign_up: 'registro'},
          # controllers: {sessiones: 'users/controls'}
 
-          get '/controls/calendar' => 'controls#event'
+          get '/users/:user_id/controls/calendar' => 'controls#calendar'
 
           get 'graphicscontrols' => 'graphics#graphics_evolution'
 

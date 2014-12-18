@@ -42,6 +42,7 @@ group :development, :test do
   gem 'pry'
   gem 'validates_timeliness', '~> 3.0'
   gem 'friendly_id', '~> 5.0.0'
+  gem 'timecop', '0.7.1'
 end
 
 group :test do

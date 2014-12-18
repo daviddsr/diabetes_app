@@ -6,25 +6,35 @@ class ControlsController < ApplicationController
 	def index
 		@user= current_user
 		@control= Control.new
-		# @control_last = Control.lastcontrol (current_user.id)
-		# @controls_average = Control.controls_average (current_user.id)
-		# @controls_average_day = Control.controls_day_average (current_user.id)
+		@control_last = Control.last_control_level (current_user.id)
+		@controls_average = Control.levels_average (current_user.id)
+		@controls_average_day = Control.controls_by_day_average (current_user.id)
 		@controls = Control.all
 		
 	end
 
-	def event
-		@user = current_user
-		@controls = @user.controls.all
-		render json: @controls if request.xhr?
+	def calendar
+		@user= current_user
+		controls = @user.controls.all
+		array = []
+		controls.each do |control|
+			hash = {}
+			hash[:id] = control.id
+			hash[:level] = control.level
+			hash[:day] = control.day.strftime('%m/%d/%Y %I:%M %p')
+			
+			array.push(hash)
+			
+		end
+		render :json => array
 	end
 
 	def months
 		@user= current_user
 		@controls_ordered = Control.order_by_date(current_user.id)
-		@control_last = Control.lastcontrol (current_user.id)
-		@controls_average = Control.controls_average (current_user.id)
-		@controls_average_day = Control.controls_day_average (current_user.id)
+		@control_last = Control.last_control_level (current_user.id)
+		@controls_average = Control.levels_average (current_user.id)
+		@controls_average_day = Control.controls_by_day_average (current_user.id)
 		
  
 	end
@@ -47,17 +57,19 @@ class ControlsController < ApplicationController
 
 	def edit
 		# if request.xhr?
+			@user = current_user
 			@control = Control.find(params[:id])
 		# end
 	end
 
 
 	def update
+		p params
 		@user = current_user
-		@control = Control.find(params[:id])
+		@control = Control.find_by(user_id: @user.id, id: params[:id])
 		if @control.update_attributes(control_params)
 			flash[:notice] = "Congratulations, your control has been updated"
-			redirect_to controls_path(current_user)
+			redirect_to user_controls_path(current_user)
 		else
 			@errors = @control.errors.full_messages
 			render 'edit'

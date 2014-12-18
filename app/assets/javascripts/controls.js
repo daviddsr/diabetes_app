@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $.get('/controls/calendar', function (data) {
+    $.get('/users/:user_id/controls/calendar', function (data) {
             drawControl(data);
         });
 

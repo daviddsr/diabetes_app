@@ -130,7 +130,14 @@ RSpec.describe Control, :type => :model do
       end
     end
     
-    describe ".graphic_data_for_a_day" do
+    describe ".graphic_data_for_all_days" do
+      before do
+        Timecop.freeze(DateTime.now)
+      end
+
+      after do
+        Timecop.return
+      end
      
       it "returns no data if there are no controls" do
         graphic_data_for_all_days = Control.graphic_data_for_all_days(user.id)
@@ -145,20 +152,23 @@ RSpec.describe Control, :type => :model do
           level: 120,
           day: time
           )
-        control2 = Control.create(
-          user_id: user.id, 
+        control2 = FactoryGirl.create(
+          :control,
+          user:user, 
           level: 106, 
           period: "pre-breakfast", 
           day: time + 3.hours
           )
-        control3 = Control.create(
-          user_id: user.id, 
+        control3 = FactoryGirl.create(
+          :control,
+          user: user, 
           level: 104, 
           period: "pre-breakfast", 
           day: time + 6.hours
           )
-        control4 = Control.create(
-          user_id: user.id, 
+        control4 = FactoryGirl.create(
+          :control,
+          user: user, 
           level: 104, 
           period: "pre-breakfast", 
           day: time + 24.hours
@@ -170,40 +180,40 @@ RSpec.describe Control, :type => :model do
       end
 
       xit "the controls are ordered from older to newer" do
-        time = DateTime.now.to_i
-        DateTime.stub!(:now).and_return{DateTime.at(time += 5) }
+        # time = DateTime.now.to_i
+        # DateTime.stub!(:now).and_return{DateTime.at(time += 5) }
         control = FactoryGirl.create(
           :control, 
           user: user, 
           level: 120,
-          day: time
+          day: Timecop.freeze(DateTime.now)
           )
         control2 = Control.create(
           user_id: user.id, 
           level: 106, 
           period: "pre-breakfast", 
-          day: time + 3.hours
+          day: Timecop.freeze(DateTime.now + 3.hours)
           )
         control3 = Control.create(
           user_id: user.id, 
           level: 104, 
           period: "pre-breakfast", 
-          day: time + 6.hours
+          day: Timecop.freeze(DateTime.now + 6.hours)
           )
         control4 = Control.create(
           user_id: user.id, 
           level: 104, 
           period: "pre-breakfast", 
-          day: time + 24.hours
+          day: Timecop.freeze(DateTime.now + 9.hours)
           )
          graphic_data_for_all_days = Control.graphic_data_for_all_days(user.id)
          expect(graphic_data_for_all_days).to eq ([{
           name: "day", 
           data:[
-            [Datetime.now.strftime("%I:%M%p").to_time.utc.to_i * 1000, 120],
-            [(Datetime.now + 3.hours).strftime("%I:%M%p").to_time.utc.to_i * 1000, 106],
-            [(Datetime.now + 6.hours).strftime("%I:%M%p").to_time.utc.to_i * 1000, 104],
-            [(Datetime.now + 9.hours).strftime("%I:%M%p").to_time.utc.to_i * 1000, 104] 
+            [Timecop.freeze(DateTime.now).strftime("%I:%M%p").to_time.utc.to_i * 1000, 120],
+            [(Timecop.freeze(DateTime.now + 3.hours)).strftime("%I:%M%p").to_time.utc.to_i * 1000, 106],
+            [(Timecop.freeze(DateTime.now + 6.hours)).strftime("%I:%M%p").to_time.utc.to_i * 1000, 104],
+            [(Timecop.freeze(DateTime.now + 9.hours)).strftime("%I:%M%p").to_time.utc.to_i * 1000, 104] 
             ]
             }])
       end
