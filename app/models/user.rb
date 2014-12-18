@@ -6,10 +6,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 	has_many :controls
-	has_many :months
-
-	has_many :meals
-
 	validates :name, presence: true, uniqueness: true
 	
 end
