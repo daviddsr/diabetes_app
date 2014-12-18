@@ -46,5 +46,6 @@ group :development, :test do
 end
 
 group :test do
+  gem 'rake' 
   gem 'shoulda-matchers', require: false
 end
