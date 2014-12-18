@@ -16,7 +16,7 @@ before_action :authenticate_user!
 	end
 
 	def graphics_evolution
-
+		graphic_data = Control.graphic_data_for_all_days(current_user.id)
 		render json: graphic_data.to_json
 
 		# @user= current_user
