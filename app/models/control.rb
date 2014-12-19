@@ -66,19 +66,17 @@ class Control < ActiveRecord::Base
 			levels = Control.where(user_id: user_id).map { |control| control.level } 
 			levels_average = levels.reduce(:+).to_f / levels.size 
 		 end
-		levels_average
+		levels_average.round(2)
 	end
 
 	def self.controls_by_day_average(user_id)
 		return 0.0 if Control.count == 0
-		sign_up_date = User.find(user_id).created_at
-		
-		difference_days = (DateTime.now.to_date - sign_up_date.to_date).to_i
+		first_user_control_day = Control.first_user_control_day(user_id)
+		difference_days = (DateTime.now.to_date - first_user_control_day.to_date).to_i
 		difference_days = 1 if difference_days == 0
-
 		controls = Control.where(user_id: user_id)
 		controls_average = (controls.size / difference_days.to_f)
-		controls_average
+		controls_average.round(2)
 	end	
 	
 	def self.last_control_level(user_id)
@@ -105,6 +103,12 @@ class Control < ActiveRecord::Base
 		days
 	end
     
+   def self.first_user_control_day(user_id)
+   	controls = Control.where(user_id: user_id)
+		controls = controls.sort_by { |control| control.day }
+		first_user_control_day = controls[0].day
+		first_user_control_day
+   end
 end
 
 

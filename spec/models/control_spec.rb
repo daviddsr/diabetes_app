@@ -122,11 +122,10 @@ RSpec.describe Control, :type => :model do
         expect(day_average).to eq 1.0
       end
 
-      it "if user signed up yesterday and there is just one control it returns 0,5" do
-        user = FactoryGirl.create(:user, created_at: Date.today - 2.day)
-        control = FactoryGirl.create(:control, user: user)
+      it "if the first control was four days ago and there are no more controls, it returns 0.25" do
+        control = FactoryGirl.create(:control, user: user, day: DateTime.now - 4.days)
         day_average = Control.controls_by_day_average user.id
-        expect(day_average).to eq 0.5
+        expect(day_average).to eq 0.25
       end
     end
     
