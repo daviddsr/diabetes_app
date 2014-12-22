@@ -10,7 +10,8 @@ class ControlsController < ApplicationController
 		@controls_average = Control.levels_average (current_user.id)
 		@controls_average_day = Control.controls_by_day_average (current_user.id)
 		@controls = Control.all
-
+		@user_id = current_user.id
+		gon.user_id = @user_id
 	end
 
 	def calendar
@@ -56,6 +57,7 @@ class ControlsController < ApplicationController
 	def edit
 		@user = current_user
 		@control = Control.find(params[:id])
+		@control_day = @control.day.strftime('%m','%d','%Y','%I','%M','%p')
 	end
 
 

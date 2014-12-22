@@ -7,4 +7,8 @@ class UsersController < ApplicationController
 
 
 	end
+
+	def fecth_id 
+		render json => {user_id: current_user.id}
+	end
 end
