@@ -13,6 +13,7 @@
 
           get 'months' => 'controls#months'
 
+          post '/editControls' => 'controls#editControls'
 
           resources :users, only: [:show]  do #:path => '' 
             resources :controls, except: [:new]# :path => '' 

@@ -30,6 +30,16 @@ class ControlsController < ApplicationController
 		render :json => array
 	end
 
+	def editControls
+		if request.xhr?
+			@control = JSON.parse!(request.body.read.to_s)
+			Control.where(id: @control["id"])[0].update_attributes(level: @control["level"], day: @control["day"], period: @control["period"])
+			render json: "ok"
+		else
+			return error
+		end
+	end
+
 	def months
 		@user= current_user
 		@controls_ordered = Control.order_by_date(current_user.id)
@@ -43,7 +53,7 @@ class ControlsController < ApplicationController
 		control_params2 ={}
 		control_params2[:level] = control_params[:level]
 		control_params2[:period] = control_params[:period]
-		control_params2[:day]=DateTime.strptime(control_params[:day],'%m/%d/%Y %I:%M %p')
+		control_params2[:day]=DateTime.strptime(control_params[:day],'%d/%m/%Y %I:%M %p')
 		@control= @user.controls.build(control_params2)
 		@control.save!
 		flash[:notice] = "Congratulations, your control has been created"
@@ -57,7 +67,6 @@ class ControlsController < ApplicationController
 	def edit
 		@user = current_user
 		@control = Control.find(params[:id])
-		@control_day = @control.day.strftime('%m','%d','%Y','%I','%M','%p')
 	end
 
 
@@ -82,7 +91,7 @@ class ControlsController < ApplicationController
 		@control= Control.find(params[:id])
 		if @control.delete
 			flash[:notice] = "Congratulations, your control has been removed"
-			redirect_to controls_path
+			redirect_to user_controls_path
 		end
 	end
 

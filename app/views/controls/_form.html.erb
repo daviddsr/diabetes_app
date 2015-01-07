@@ -30,7 +30,7 @@
 		            <div class="form-group">
 		                <div class='input-group date' id='datetimepicker1'>
 
-		                    <%= f.text_field :day, default: DateTime.current, :class => 'form-control' %>
+		                    <%= f.text_field :day, default: DateTime.current, :class => 'form-control', 'data-date-format' => 'DD/MM/YYYY hh:mm A/PM' %>
 		                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
 		                    </span>
 		                </div>
