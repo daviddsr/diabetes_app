@@ -79,7 +79,7 @@ $(document).ready(function() {
 	document.getElementById('button_edit').addEventListener("click", editControl);
 
 	 function editControl(event) {
-	            event.preventDefault();
+	     event.preventDefault();
 	     console.log(x);
 	     var controlEdited = {
 	         "level": document.getElementById('control_level').value,
@@ -87,10 +87,11 @@ $(document).ready(function() {
 	         "period": document.getElementById('control_period').value,
 	         "id": x
 	    }
-	    $('#calendar').fullCalendar('updateEvent', y);
-	    $.post("/editControls", JSON.stringify(controlEdited));
 	    
-	    console.log(controlEdited)
+	    $.post("/editControls", JSON.stringify(controlEdited));
+	    y.title = document.getElementById('control_level').value,
+	    $('#calendar').fullCalendar('updateEvent', y);
+	    
 	    
 	};
 

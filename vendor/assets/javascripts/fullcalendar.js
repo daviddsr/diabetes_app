@@ -20,7 +20,7 @@ var defaults = {
 	titleRangeSeparator: ' \u2014 ', // emphasized dash
 	monthYearFormat: 'MMMM YYYY', // required for en. other languages rely on datepicker computable option
 
-	defaultTimedEventDuration: '02:00:00',
+	defaultTimedEventDuration: '00:20:00',
 	defaultAllDayEventDuration: { days: 1 },
 	forceEventDuration: false,
 	nextDayThreshold: '09:00:00', // 9am
