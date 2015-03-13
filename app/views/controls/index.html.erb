@@ -19,55 +19,39 @@
 </div>
 
 <!-- <p><%= notice %></p> -->
+<div class="row">
+  <aside class="col-md-12">
+    <div class="rowtop">
+      <div class="col-md-4">
+        <p class= "textinfo">Last control</p>
+        <p class="lastcontrol"><%= @control_last %> mg/dl</p>
+      </div>
+    </div>
 
+      <div class="rowmiddle">
+      <div class="col-md-4">
+        <p class= "textaverage">Controls average</p>
+        <p class="lastcontrol"><%= @controls_average %> mg/dl</p>
+      </div>
+      </div>
 
-<div class="col-md-8 calendario">
-  
-    <div id='calendar'></div>
-  
+      <div class="rowdown">
+      <div class="col-md-4">
+        <p class= "textaverage">Controls by day</p>
+        <p class="controls_per_day"><%= @controls_average_day %></div></p>
+      </div>
+
+      <div class="rowbottom">
+      <div class="col-md-4"></div>
+      </div>
+
+  </aside>
 </div>
+<div class="row">
 
-
-<aside>
-<div class="rowtop">
-  <div class="col-md-4">
-    <p class= "textinfo">Last control</p>
-    <p class="lastcontrol"><%= @control_last %> mg/dl</p>
+  <div class="col-md-12 calendario">
+    
+      <div id='calendar'></div>
+    
   </div>
 </div>
-
-  <div class="rowmiddle">
-  <div class="col-md-4">
-    <p class= "textaverage">Controls average</p>
-    <p class="lastcontrol"><%= @controls_average %> mg/dl</p>
-  </div>
-  </div>
-
-  <div class="rowdown">
-  <div class="col-md-4">
-    <p class= "textaverage">Controls by day</p>
-    <p class="controls_per_day"><%= @controls_average_day %></div></p>
-  </div>
-
-  <div class="rowbottom">
-  <div class="col-md-4"></div>
-  </div>
-
-</aside>
-
-
-
-
-
-   
-  
-  
-  
-  
-
-
-
-
-
-
-

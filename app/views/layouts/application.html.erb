@@ -15,8 +15,10 @@
 
 	<%= render partial: "controls/flash_messages", flash: flash %>
     <%= render partial: "layouts/menu" %>
-
-<%= yield %>
+    
+    <div class="container">
+        <%= yield %>
+    </div>
 
 </body>
 </html>
