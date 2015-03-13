@@ -1,12 +1,16 @@
-class Control < ActiveRecord::Base
+class Control
+	include Mongoid::Document
 
 	validates :level, presence: true
 	validates :period, presence: true
 	validates :day, presence: true
 	validates :level, :numericality => { :greater_than => 24, :less_than_or_equal_to => 600 }
-	# validates_datetime :day, :after {Control.day + 30.minutes}
-
+	
 	belongs_to :user
+
+	field :level, type: Integer
+	field :period, type: String
+	field :day, type: DateTime
 
 	scope :by_day, ->(day) { where("day like ?", "#{day}%") }
 

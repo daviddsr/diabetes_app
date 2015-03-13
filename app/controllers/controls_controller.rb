@@ -58,7 +58,7 @@ class ControlsController < ApplicationController
 		@control.save!
 		flash[:notice] = "Congratulations, your control has been created"
 		redirect_to user_controls_path
-	rescue ActiveRecord::RecordInvalid
+	rescue Exception
 		flash[:error]
 		render 'index'
 	end
