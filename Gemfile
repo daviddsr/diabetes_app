@@ -35,9 +35,6 @@ gem 'devise'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'friendly_id', '~> 5.0.0'
-
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails'
@@ -45,7 +42,6 @@ group :development, :test do
   gem 'pry'
   gem 'validates_timeliness', '~> 3.0'
   gem 'timecop', '0.7.1'
-  gem 'sqlite3'
 end
 
 group :test do
