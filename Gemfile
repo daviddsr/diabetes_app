@@ -25,6 +25,10 @@ group :development, :test do
   gem 'awesome_print'
 end
 
+group :development do
+  gem 'guard-rails'
+end
+
 group :test do
   gem 'shoulda-matchers', require: false
   gem "capybara-webkit"
