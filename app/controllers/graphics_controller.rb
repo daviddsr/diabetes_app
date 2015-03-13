@@ -4,16 +4,22 @@ class GraphicsController < ApplicationController
 before_action :authenticate_user!
 
 	def index
-
-		
-
-		@user= current_user
-		@controls= @user.controls
+		@user = current_user
+		@controls = @user.controls
 		@control_last = Control.last_control_level (current_user.id)
 		@controls_average = Control.levels_average (current_user.id)
 		@controls_average_day = Control.controls_by_day_average (current_user.id)
-
 	end
+
+  def d3
+    
+  end
+
+  def data
+    respond_to do |format|
+      format.json { render :json => [1,2,3,4,5] }
+    end
+  end
 
 	def graphics_evolution
 		graphic_data = Control.graphic_data_for_all_days(current_user.id)
@@ -47,21 +53,9 @@ before_action :authenticate_user!
 			
 
 		# end
-    	
-		
-		
-		
-	 
-
 	end
 
-
-
-
-
+  def method_name
+    
+  end
 end
-
-
-
-
-

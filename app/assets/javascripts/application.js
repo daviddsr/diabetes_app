@@ -18,3 +18,4 @@
 //= require Chart
 //= require highcharts
 //= require datetimepicker
+//= require d3
