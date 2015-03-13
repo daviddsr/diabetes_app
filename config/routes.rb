@@ -1,25 +1,27 @@
-        Rails.application.routes.draw do
+Rails.application.routes.draw do
 
-          root 'staticpages#index'
+  root 'staticpages#index'
 
-          devise_for :users # :path => '',
+  devise_for :users # :path => '',
 
-         #  path_names: {sign_in: 'login', sign_up: 'registro'},
-         # controllers: {sessiones: 'users/controls'}
+ #  path_names: {sign_in: 'login', sign_up: 'registro'},
+ # controllers: {sessiones: 'users/controls'}
 
-          get '/users/:user_id/controls/calendar' => 'controls#calendar'
+  get '/users/:user_id/controls/calendar' => 'controls#calendar'
 
-          get 'graphicscontrols' => 'graphics#graphics_evolution'
+  get 'graphicscontrols' => 'graphics#graphics_evolution'
+  get 'graphics/d3'
+  get 'graphics/data', :defaults => { :format => 'json' }
 
-          get 'months' => 'controls#months'
+  get 'months' => 'controls#months'
 
-          post '/editControls' => 'controls#editControls'
+  post '/editControls' => 'controls#editControls'
 
-          resources :users, only: [:show]  do #:path => '' 
-            resources :controls, except: [:new]# :path => '' 
-            resources :graphics, only: [:index]
-            resources :meals, only: [:index, :new, :create]
-          end
+  resources :users, only: [:show]  do #:path => '' 
+    resources :controls, except: [:new]# :path => '' 
+    resources :graphics, only: [:index]
+    resources :meals, only: [:index, :new, :create]
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.
