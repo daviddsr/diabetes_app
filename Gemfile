@@ -16,6 +16,7 @@ gem 'devise'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
+  gem 'cucumber-rails', :require => false
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'pry'
@@ -26,6 +27,7 @@ end
 
 group :test do
   gem 'shoulda-matchers', require: false
+  gem "capybara-webkit"
 end
 
 group :production do
