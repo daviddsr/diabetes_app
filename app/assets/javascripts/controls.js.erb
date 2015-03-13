@@ -63,7 +63,7 @@ $(document).ready(function() {
                     $('#modalTitle').html(calEvent.title);
                     $('#control_day_edit').val(moment(calEvent.start._i).format("DD-MM-YYYY hh:mm A/PM"));
                     $('#control_level').val(calEvent.title.toString());
-                    	console.log(calEvent)
+                        console.log(calEvent)
                         console.log(calEvent.title)
                         console.log(calEvent.start._i)
                         console.log(calEvent.id)
@@ -72,28 +72,36 @@ $(document).ready(function() {
                     y=calEvent;
 
                 }
-	})
-	}
+    })
+    }
 });
 
-	document.getElementById('button_edit').addEventListener("click", editControl);
+    document.getElementById('button_edit').addEventListener("click", editControl);
 
-	 function editControl(event) {
-	     event.preventDefault();
-	     console.log(x);
-	     var controlEdited = {
-	         "level": document.getElementById('control_level').value,
-	         "day": document.getElementById('control_day_edit').value,
-	         "period": document.getElementById('control_period').value,
-	         "id": x
-	    }
-	    
-	    $.post("/editControls", JSON.stringify(controlEdited));
-	    y.title = document.getElementById('control_level').value,
-	    $('#calendar').fullCalendar('updateEvent', y);
-	    
-	    
-	};
+     function editControl() {
+         event.preventDefault();
+         var controlEdited = {
+             "level": document.getElementById('control_level').value,
+             "day": document.getElementById('control_day_edit').value,
+             "period": document.getElementById('control_period').value,
+             "id": x
+        }
+        
+        $.post("/editControls", JSON.stringify(controlEdited));
+        
+        y.title = document.getElementById('control_level').value;
+        var m = moment(document.getElementById('control_day_edit').value, "DD-MM-YYYY HH:mm A")-y.start;
+        y.start.add(m/1000,'seconds');
+        console.log( y.start - moment(document.getElementById('control_day_edit').value, "DD-MM-YYYY hh:mm"));
+        
+        
+        console.log(y);
+        console.log(y.title);
+        console.log(y.start);
+        $('#calendar').fullCalendar( 'updateEvent', y );
+        console.log(y);
+        
+    };
 
 
 
