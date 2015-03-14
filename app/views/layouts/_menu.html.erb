@@ -14,11 +14,12 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
+              <% if user_signed_in? %>
                 <li class="active"><%= link_to 'Home', user_controls_path(current_user.id) %></li>
                 <li><%= link_to 'Graphics', user_graphics_path(current_user.id) %></li>
                 <li><%= link_to 'New Meal', new_user_meal_path(current_user.id) %></li>
                 <li><%= link_to 'My Controls', months_path %></li>
-                    
+                <% end %>  
               </ul>
                 
               
