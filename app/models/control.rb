@@ -74,7 +74,10 @@ class Control
 	end
 
 	def self.controls_by_day_average(user_id)
-		return 0.0 if Control.count == 0
+		user = User.where(user_id: user_id)
+		puts "I get until here"
+		p Control.all.where(user_id: user_id)
+		return 0.0 if Control.all.where(user_id: user_id).count == 0
 		first_user_control_day = Control.first_user_control_day(user_id)
 		difference_days = (DateTime.now.to_date - first_user_control_day.to_date).to_i
 		difference_days = 1 if difference_days == 0
